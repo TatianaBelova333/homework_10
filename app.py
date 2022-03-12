@@ -32,7 +32,8 @@ def candidate_profile(id):
 def candidate_skills(skill):
     candidates_with_skill = ''
     for candidate in candidates:
-        if skill in candidate.get('skills', 'not applicable').lower():
+        skills = candidate.get('skills', 'not applicable').lower().split(', ')
+        if skill in skills:
             candidate_info = utils.get_candidate_profile(candidate)
             candidates_with_skill += candidate_info
     return f'<pre>{candidates_with_skill}</pre>'
